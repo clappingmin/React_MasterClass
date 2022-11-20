@@ -1,0 +1,23 @@
+# TypeScript
+
+## TypeScript
+- JavaScript를 기반으로 한 프로그래밍 언어
+- strongly-typed 언어 : 프로그래밍 언어가 작동하기 전에 type을 확인하는 언어
+- type이 맞지 않는 입력이 있을 경우 에러를 발생시킨다.
+- 개발자가 할 실수들을 방지할 수 있다.
+- TypeScript는 브라우저가 이해할 수 없다. TypeScript를 컴파일해서 JavaScript 만듦
+
+## 설치
+### 프로젝트 새로 만들 경우
+```bash
+npx create-react-app 프로젝트명 --template typescript
+```
+### 기존 프로젝트를 바꿀 경우
+```bash
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+```
+
+### 라이브러리 설치할 때
+```bash
+npm install --save @types/styled-components
+```
