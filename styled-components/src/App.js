@@ -1,38 +1,51 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-const Father = styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
 
+const rotationAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+    border-radius: 0px;
+  } 
+  50% {
+    transform: rotate(360deg);
+    border-radius: 100px;
+  }
+  100% {  
+    transform: rotate(0deg);
+    border-radius: 0px;
+  }
+`;
+
 const Box = styled.div`
-  background-color: ${(props) => props.bgColor};
+  background-color: tomato;
   width: 100px;
   height: 100px;
-`;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: ${rotationAnimation} 1s linear infinite;
 
-const Circle = styled(Box)`
-  border-radius: 50px;
-`;
-
-const Btn = styled.button`
-  color: wheat;
-  background-color: tomato;
-  border: 0;
-  border-radius: 15px;
-`;
-
-const Input = styled.input.attrs({ required: true, minLength: 10 })`
-  background-color: tomato;
+  span {
+    font-size: 36px;
+    &:hover {
+      font-size: 100px;
+    }
+    &:active {
+      opacity: 0;
+    }
+  }
 `;
 
 function App() {
   return (
-    <Father as="header">
-      <Input />
-      <Input />
-      <Input />
-      <Input />
-    </Father>
+    <Wrapper as="header">
+      <Box>
+        <span>🤩</span>
+      </Box>
+    </Wrapper>
   );
 }
 
