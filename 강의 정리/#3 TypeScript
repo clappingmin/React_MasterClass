@@ -21,3 +21,43 @@ npm install --save typescript @types/node @types/react @types/react-dom @types/j
 ```bash
 npm install --save @types/styled-components
 ```
+
+prop Tyes
+- prop이 거기에 있는지 없는지를 확인해 준다.
+= 브라우저 콘솔에 경고를 보여준다.
+- 코드를 실행한 후에만 확인 가능하다.
+- 우리가 TypeScript를 사용하는 이유는 코드가 실행되기 전에 오류를 확인하기 위해서인데,,
+- 그러니 prop Types를 사용하지 않고 TypeScript로 보호해줄 것
+
+interface (인터페이스)
+- object shape을 TypeScript에게 설명해주는 TypeScript의 개념
+
+```JavaScript
+interface PlayerShape {
+  name: string;
+  age: string;
+}
+
+const sayHello = (playerObj: PlayerShape) => `Hello ${playerObj.name}`;
+
+sayHello({ name: 'min', age: 12 });
+```
+
+default props? optional props?
+
+```JavaScript
+// borderColor가 props에 있으면 그 값을, 없으면 'white'를 Container에 넘겨주겠다.
+// Circle한테는 borderColor가 optional, Container한테는 Required일 경우!
+function Circle({ bgColor, borderColor }: CircleProps) {
+  return <Container bgColor={bgColor} borderColor={borderColor ?? 'white'} />;
+}
+```
+
+TypeScript에서 state
+- typeScript에서 state의 default의 type은 앞으로 변하지 않을 것이라고 생각한다.
+- type을 쓰지 않아도 default value를 보고 알아서 type을 생각한다.
+- 만약 string 또는 number 타입으로 사용하고 싶을 경우?
+```JavaScript
+  const [counter, setCounter] = useState<number | string>(0);
+```
+- 하지만 매우 드물다.
