@@ -61,3 +61,7 @@ TypeScript에서 state
   const [counter, setCounter] = useState<number | string>(0);
 ```
 - 하지만 매우 드물다.
+
+## Theme
+1. npm install @types/styled-components
+2. declaration(선언) 파일 생성
