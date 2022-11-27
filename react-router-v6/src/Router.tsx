@@ -2,6 +2,8 @@ import { createBrowserRouter, Route, Routes } from 'react-router-dom';
 import About from './screens/About';
 import Home from './screens/Home';
 import Root from './Root';
+import NotFound from './screens/NotFound';
+import ErrorComponent from './components/ErrorComponent';
 
 const router = createBrowserRouter([
   {
@@ -12,12 +14,14 @@ const router = createBrowserRouter([
       {
         path: '',
         element: <Home />,
+        errorElement: <ErrorComponent />,
       },
       {
         path: 'about', // /의 자식
         element: <About />,
       },
     ],
+    errorElement: <NotFound />,
   },
 ]);
 
