@@ -1,18 +1,24 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './Header';
+import { createBrowserRouter, Route, Routes } from 'react-router-dom';
 import About from './screens/About';
 import Home from './screens/Home';
+import Root from './Root';
 
-function Router() {
-  return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
+const router = createBrowserRouter([
+  {
+    // 첫번째 라우터는 Homepage가 아닌 전체 route들의 컨테이너 같은 것
+    path: '/', // url
+    element: <Root />,
+    children: [
+      {
+        path: '',
+        element: <Home />,
+      },
+      {
+        path: 'about', // /의 자식
+        element: <About />,
+      },
+    ],
+  },
+]);
 
-export default Router;
+export default router;
