@@ -37,3 +37,26 @@ const router = createBrowserRouter([
   },
 ]);
 ```
+
+## userNavigate
+
+- 다른 페이지로 이동시키는 한 가지 방법은 Link를 이용하는 것
+  - Link는 유저가 클릭해야 한다.
+- 유저의 클릭없이 유저를 이동시키고 싶을 때는 useNavigate를 이용한다.
+- 유저가 로그인해서 redirect 시키고 싶거나, 유저가 어떤 페이지로 갔는데 접근 권한이 없을 때 사용한다.
+
+## useParams
+
+- 주소의 정보를 가져올 때 사용
+
+```javaScript
+import { useParams } from 'react-router-dom';
+
+function User() {
+  const params = useParams();
+  console.log(params);
+  return <h1>User</h1>;
+}
+
+export default User;
+```
