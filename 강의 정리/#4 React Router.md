@@ -60,3 +60,10 @@ function User() {
 
 export default User;
 ```
+
+## Outlet
+
+- outlet 컴포넌트는 Route의 자식들을 render 했었어
+- react Router의 역할은 Root를 render하는건데 Root한테 자식이 있으니 Outlet을 Root의 자식으로 대체시킨다.
+- 해당 페이지의 자식이 있다면 그 경우에 Outlet이 사용된다.
+- /를 쓰면 절대경로이다. 상대경로를 쓰려면 /없이 주소를 적는다
