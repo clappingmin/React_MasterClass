@@ -71,3 +71,29 @@ export default User;
 ## useOutletContext
 
 - url로 데이터를 보내는 대신 자식 route들과 소통하는 방법이다.
+
+## useSearchParams
+
+- search 파라미터를 수정하게 도와주는 훅이다.
+- 또는 URL에서 search 파라미터를 읽어내는 것을 도와준다.
+- 보통 검색하거나, filter하거나, pagenation 하고 싶을 때나 할 때 url에 정보를 넣는다.
+
+## Extras
+
+- react router로 데이터를 fetch하는 것도 가능하고, form을 제출하는 것도 가능하다.
+- array를 제공하는데 array의 첫번째 아이템은 search 파라미터를 읽기 위한 것이다.
+- 그리고 다른 것은 search 파라미터를 set하기 위한 함수이다.
+- readSearchParams는 URLSearchParams라는 class를 가진다.
+  - URLSearchParams는 많은 utility method들을 제공한다.
+  - 내 searh 파라미터가 'geo'를 가지나요? > readSearchParams.has('geo')
+- setSearchParams은 search 파라미터를 변경할 때 사용
+
+```javaScript
+  const [readSearchParams, setSearchParams] = useSearchParams();
+  setTimeout(() => {
+    setSearchParams({
+      day: 'today',
+      tomorrow: '123',
+    });
+  }, 3000);
+```
