@@ -9,7 +9,7 @@ function User() {
         User with id {userId} is named: {users[Number(userId) - 1].name}
       </h1>
       <Link to="followers">see followers</Link>
-      <Outlet />
+      <Outlet context={{ nameOfMyUser: users[Number(userId) - 1].name }} />
     </div>
   );
 }
