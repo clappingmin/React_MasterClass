@@ -31,3 +31,9 @@ npm i styled-reset
 
 - 일종의 유령 컴포넌트
 - 부모 없이 서로 붙어 있는 것들을 리턴할 수 있게 해준다.
+
+#### <a></a>
+
+- a href를 하면 페이지가 새로고침되어 버려서 사용 X
+- react router에서 <Link></Link>들은 결국 <a></a>로 바뀐다.
+  - styled-component에서 수정할 때 a로 부르면 된다.
