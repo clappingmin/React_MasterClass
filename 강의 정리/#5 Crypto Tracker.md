@@ -82,6 +82,7 @@ npm i react-query
 ```
 
 - react 버전이 18 이상일 경우 typeScript에서 react query를 못불러 온다.
+- react 버전 17로 하던가
 
 ```bash
 npm i @tanstack/react- query
@@ -92,7 +93,7 @@ npm i @tanstack/react- query
 - React 애플리케이션에서 서버 state를 fetching, caching, synchronizing, updating 할 수 있도록 도와주는 라이브러리
 - global state를 건드리지 않고 React 및 React Native 애플리케이션에서 데이터를 가져오고 캐시하고 업데이트 한다.
 - themeProvider 때처럼 queryClientProvider 안에 있는 모든 것은 queryClient에 접근할 수 있다.
-- 데이터를 파괴하지 않고 캐시해둠
+- response를 파괴하지 않고 캐시해둠
 
 1. 사용 첫 단계 fetcher 함수 만들기
 
@@ -104,3 +105,14 @@ npm i @tanstack/react- query
 - 두 개의 인자를 받는다. 쿼리 key(쿼리의 고유식별자),fetcher 함수
 - isLoading이라고 불리는 boolean 값을 return한다.
 - return 해주는 data는 data에 넣어준다.
+
+### Devtools
+
+- render할 수 있는 component
+- React query에 있는 Devtools를 import 하면 캐시에 있는 query를 볼 수 있다.
+
+```javascript
+import { ReactQueryDevtools } from 'react-query/devtools';
+
+<ReactQueryDevtools initialIsOpen={true} />;
+```
