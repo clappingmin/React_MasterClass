@@ -54,3 +54,7 @@ npm i styled-reset
 - state로 데이터를 보낼 때 주의할 점
   - 다이렉트로 그 주소에 접근할 경우 error가 뜬다.
   - 클릭할 때 state가 전달되서 다이렉트로 접근하면 state가 정의되지 않았기 때문에 state가 undefinedf라서 오류가 발생한다.
+
+## interfate
+
+- interface 이름 지을 때 앞에 I를 붙임 (보통)
