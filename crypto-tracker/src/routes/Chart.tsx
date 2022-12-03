@@ -1,9 +1,19 @@
-import { useLocation } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+import { fetchCoinHistory } from '../api';
 
-function Chart() {
-  const location = useLocation();
+interface ChartProps {
+  coinId: string;
+}
 
-  return <div>차트</div>;
+function Chart({ coinId }: ChartProps) {
+  const param = useParams();
+
+  const { isLoading, data } = useQuery(['ohlcv', coinId], () =>
+    fetchCoinHistory(coinId)
+  );
+
+  return <div>{isLoading ? null : data[0].time_open}</div>;
 }
 
 export default Chart;
