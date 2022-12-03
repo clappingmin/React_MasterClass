@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Route, Routes, useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import Chart from './Chart';
+import Price from './Price';
 
 const Container = styled.div`
   padding: 0 20px;
@@ -83,7 +85,7 @@ interface PriceData {
 }
 
 function Coin() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { coinId } = useParams();
 
   const location = useLocation();
@@ -97,23 +99,26 @@ function Coin() {
       const infoData = await (
         await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
       ).json();
-      console.log(infoData);
       const priceData = await (
         await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
       ).json();
-      console.log(priceData);
 
       setInfo(infoData);
       setPriceInfo(priceData);
+      setLoading(false);
     })();
-  }, []);
+  }, [coinId]);
 
   return (
     <Container>
       <Header>
         <Title>{String(state)}</Title>
       </Header>
-      {loading ? <Loader>Loading...</Loader> : priceInfo?.quotes.USD.ath_date}
+      {loading ? <Loader>Loading...</Loader> : info?.rank}
+      <Routes>
+        <Route path="chart" element={<Chart />}></Route>
+        <Route path="price" element={<Price />}></Route>
+      </Routes>
     </Container>
   );
 }

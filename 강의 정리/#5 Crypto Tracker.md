@@ -58,3 +58,10 @@ npm i styled-reset
 ## interfate
 
 - interface 이름 지을 때 앞에 I를 붙임 (보통)
+
+## Nested Routing (중첩 라우팅)
+
+### useEffect()
+
+- 해당 훅을 최초에 한번만 실행하고 싶을 때는 []로 no defendencies를 사용한다.
+- 하지만 훅은 최선의 성능을 위해서는 hook안에서 사용한 것은 defendency를 넣어야 한다고 경고를 준다.
