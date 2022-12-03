@@ -61,7 +61,46 @@ npm i styled-reset
 
 ## Nested Routing (중첩 라우팅)
 
+- v6에서는 Switch가 Routes로 변경됐다.
+- Outlet을 사용하면 Nested Routing을 쉽게 구현할 수 있다.
+
 ### useEffect()
 
 - 해당 훅을 최초에 한번만 실행하고 싶을 때는 []로 no defendencies를 사용한다.
 - 하지만 훅은 최선의 성능을 위해서는 hook안에서 사용한 것은 defendency를 넣어야 한다고 경고를 준다.
+
+### useMatch
+
+- hook
+- 사용자가 특정한 URL에 있는지의 여부를 알려주는 훅
+- 특정 URL에 들어와있으면 Object를 아닐 경우 null을 반환한다.
+
+## React Query
+
+```bash
+npm i react-query
+```
+
+- react 버전이 18 이상일 경우 typeScript에서 react query를 못불러 온다.
+
+```bash
+npm i @tanstack/react- query
+```
+
+- @tanstack/react- query에서 useQuery를 사용할 때 query key의 값을 []로 묶어줘야 한다.
+
+- React 애플리케이션에서 서버 state를 fetching, caching, synchronizing, updating 할 수 있도록 도와주는 라이브러리
+- global state를 건드리지 않고 React 및 React Native 애플리케이션에서 데이터를 가져오고 캐시하고 업데이트 한다.
+- themeProvider 때처럼 queryClientProvider 안에 있는 모든 것은 queryClient에 접근할 수 있다.
+- 데이터를 파괴하지 않고 캐시해둠
+
+1. 사용 첫 단계 fetcher 함수 만들기
+
+- 니꼬쌤은 기본적으로 API와 관련된 것들은 component들과 멀리 떨어뜨림
+- fetch 함수는 꼭 fetch promise를 return해 줘야 한다.
+
+2. useQuery(쿼리 key(쿼리의 고유식별자),fetcher 함수)
+
+- 두 개의 인자를 받는다. 쿼리 key(쿼리의 고유식별자),fetcher 함수
+- isLoading이라고 불리는 boolean 값을 return한다.
+- return 해주는 data는 data에 넣어준다.

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import { Route, Routes, useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Chart from './Chart';
@@ -22,6 +24,21 @@ const Title = styled.h1`
 const Loader = styled.span`
   text-align: center;
   display: block;
+`;
+
+const Tab = styled.span<{ isActive: boolean }>`
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 7px 0;
+  border-radius: 10px;
+  color: ${(props) =>
+    props.isActive ? props.theme.accentColor : props.theme.textColor};
+  a {
+    display: block;
+  }
 `;
 
 interface RouterState {
@@ -94,6 +111,9 @@ function Coin() {
   const [info, setInfo] = useState<InfoData>();
   const [priceInfo, setPriceInfo] = useState<PriceData>();
 
+  const priceMatch = useMatch('/:coinId/price');
+  const chartMatch = useMatch('/:coinId/chart');
+
   useEffect(() => {
     (async () => {
       const infoData = await (
@@ -112,9 +132,16 @@ function Coin() {
   return (
     <Container>
       <Header>
-        <Title>{String(state)}</Title>
+        <Title>{info?.name}</Title>
       </Header>
       {loading ? <Loader>Loading...</Loader> : info?.rank}
+
+      <Tab isActive={chartMatch === null ? false : true}>
+        <Link to={'chart'}>Chart</Link>
+      </Tab>
+      <Tab isActive={priceMatch === null ? false : true}>
+        <Link to={'price'}>Price</Link>
+      </Tab>
       <Routes>
         <Route path="chart" element={<Chart />}></Route>
         <Route path="price" element={<Price />}></Route>

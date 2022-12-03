@@ -1,5 +1,9 @@
+import { useLocation } from 'react-router-dom';
+
 function Chart() {
-  return <div>Chart</div>;
+  const location = useLocation();
+
+  return <div>차트</div>;
 }
 
 export default Chart;
